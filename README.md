@@ -4,9 +4,11 @@
 ## Getting Started
 This project uses Python. Make sure you have python installed and added to path on your system
 ### Prerequisites
-At least Python 3.10 required
+- At least Python 3.10 required
 
-`pip install customtkinter`
+- For some of the projects, run
+
+    `pip install customtkinter`
 
 ### Run a project
 `python project_name.py`
