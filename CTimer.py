@@ -7,7 +7,7 @@ from playsound import playsound
 
 baseWindow = tk.Tk()
 
-ZEROS = "0"
+ZEROS = "00"
 
 def get_time_inputs():
     return (
