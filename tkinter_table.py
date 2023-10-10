@@ -8,13 +8,9 @@ class TableWidget(ttk.Frame):
 		table_columns = tuple((i.lower() for i in table_data[0]))
 		self.table = ttk.Treeview(self, columns=table_columns, show='headings', padding=20)
 
-		self.table.heading("no", text='No')
-		self.table.heading("clubs", text='Clubs')
-		self.table.heading("points", text='Points')
-
-		self.table.column("no", anchor='center')
-		self.table.column("clubs", anchor='center')
-		self.table.column("points", anchor='center')
+		for i in table_columns:
+			self.table.heading(i, text=i.capitalize())
+			self.table.column(i, anchor='center')
 
 		self.table.tag_configure('red', background='red', foreground='white')
 		self.table.tag_configure('lightblue', background='lightblue')
@@ -22,7 +18,7 @@ class TableWidget(ttk.Frame):
 		self.table.tag_configure('blue', background='blue', foreground='white')
 
 		for i in range(1, len(table_data)):
-			self.table.insert('', tk.END, values=table_data[i], tags=table_data[i][-1])
+			self.table.insert('', tk.END, values=table_data[i], tag=table_data[i][-1])
 
 		self.table.grid(row=0, column=0, sticky=tk.NSEW)
 		self.pack()
