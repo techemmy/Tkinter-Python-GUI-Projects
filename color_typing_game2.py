@@ -5,47 +5,6 @@ root = ctk.CTk()
 root.title("Color Typing Game")
 root.minsize(500, 350)
 
-COLORS = ["red", "green", "blue", "yellow", "violet", "black", "white"]
-TOTAL_GAME_TIME = 20
-
-game_running_var = ctk.BooleanVar()
-game_running_var.set(False)
-
-timer_var = ctk.IntVar()
-timer_var.set(TOTAL_GAME_TIME)
-
-score_var = ctk.IntVar()
-score_var.set(0)
-
-timer_id_var = ctk.StringVar()
-
-current_color_var = ctk.StringVar()
-
-app_frame = ctk.CTkFrame(root, width=700)
-app_frame.pack(padx=20, pady=20, expand=True, fill=ctk.BOTH)
-
-time_and_score_frame = ctk.CTkFrame(app_frame)
-
-timer = ctk.CTkLabel(time_and_score_frame, text=f"Time left: {timer_var.get()}s")
-timer.pack(side="left", padx=10)
-
-user_score = ctk.CTkLabel(time_and_score_frame, text=f"Score: {score_var.get()}")
-user_score.pack(side="right", padx=10)
-
-time_and_score_frame.pack(fill=ctk.X)
-
-ctk.CTkLabel(
-    app_frame, text="Instruction: Enter the color of the text you see\nand not the text",
-    font=("Montserrat", 18, "italic"), text_color='lightblue'
-).pack(padx=10, pady=20)
-
-changing_text = ctk.CTkLabel(app_frame, text="Blue", font=("Montserrat", 30, "bold"))
-changing_text.pack(pady=20, fill=ctk.X)
-
-user_input = ctk.CTkEntry(app_frame, width=300, height=50)
-user_input.pack()
-
-ctk.CTkLabel(app_frame, text="Press enter to start/reset the game...", text_color="grey").pack()
 
 def reset_game():
     timer_var.set(TOTAL_GAME_TIME)
@@ -92,6 +51,48 @@ def start_game(e):
         user_input.delete(0, "end")
 
 
+COLORS = ["red", "green", "blue", "yellow", "violet", "black", "white"]
+TOTAL_GAME_TIME = 20
+
+game_running_var = ctk.BooleanVar()
+game_running_var.set(False)
+
+timer_var = ctk.IntVar()
+timer_var.set(TOTAL_GAME_TIME)
+
+score_var = ctk.IntVar()
+score_var.set(0)
+
+timer_id_var = ctk.StringVar()
+
+current_color_var = ctk.StringVar()
+
+app_frame = ctk.CTkFrame(root, width=700)
+app_frame.pack(padx=20, pady=20, expand=True, fill=ctk.BOTH)
+
+time_and_score_frame = ctk.CTkFrame(app_frame)
+
+timer = ctk.CTkLabel(time_and_score_frame, text=f"Time left: {timer_var.get()}s")
+timer.pack(side="left", padx=10)
+
+user_score = ctk.CTkLabel(time_and_score_frame, text=f"Score: {score_var.get()}")
+user_score.pack(side="right", padx=10)
+
+time_and_score_frame.pack(fill=ctk.X)
+
+ctk.CTkLabel(
+    app_frame, text="Instruction: Enter the color of the text you see\nand not the text",
+    font=("Montserrat", 18, "italic"), text_color='lightblue'
+).pack(padx=10, pady=20)
+
+changing_text = ctk.CTkLabel(app_frame, text="Blue", font=("Montserrat", 30, "bold"))
+changing_text.pack(pady=20, fill=ctk.X)
+
+user_input = ctk.CTkEntry(app_frame, width=300, height=50)
+user_input.pack()
 user_input.bind("<Return>", start_game)
+
+ctk.CTkLabel(app_frame, text="Press enter to start/reset the game...", text_color="grey").pack()
+
 
 root.mainloop()
