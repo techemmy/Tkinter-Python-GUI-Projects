@@ -4,17 +4,19 @@ import threading
 from playsound import playsound
 
 baseWindow = ctk.CTk()
-baseWindow.title('Countdown Timer')
+baseWindow.title("Countdown Timer")
 baseWindow.resizable(False, False)
 
 ZEROS = "00"
+
 
 def get_time_inputs():
     return (
         hours_input.get().strip(),
         minutes_input.get().strip(),
-        secs_input.get().strip()
+        secs_input.get().strip(),
     )
+
 
 def reset_entries(event):
     hours, minutes, secs = get_time_inputs()
@@ -28,6 +30,7 @@ def reset_entries(event):
         secs_input.delete(0, "end")
         secs_input.insert(0, ZEROS)
 
+
 def start_timer():
     hours, mins, secs = [int(i) for i in get_time_inputs()]
     m, secs = divmod(secs, 60)
@@ -39,7 +42,9 @@ def start_timer():
     base_frame = ctk.CTkFrame(timer_UI)
     base_frame.pack(pady=20, padx=10)
 
-    timeLabel = ctk.CTkLabel(base_frame, text=f"{hours:02d}:{mins:02d}:{secs:02d}", font=('Arial', 24))
+    timeLabel = ctk.CTkLabel(
+        base_frame, text=f"{hours:02d}:{mins:02d}:{secs:02d}", font=("Arial", 24)
+    )
     timeLabel.grid(row=0, column=0)
 
     while (hours != 0) or (mins != 0) or (secs != 0):
@@ -55,9 +60,10 @@ def start_timer():
         secs -= 1
         timeLabel.configure(text=f"{hours:02d}:{mins:02d}:{secs:02d}")
 
-    timeLabel.configure(text='Time up!!!')
+    timeLabel.configure(text="Time up!!!")
     playsound("./sounds/digital-alarm.mp3")
     timer_UI.destroy()
+
 
 def start_timer_UI():
     t = threading.Thread(target=start_timer, daemon=True)

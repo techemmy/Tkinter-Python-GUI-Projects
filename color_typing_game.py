@@ -9,13 +9,14 @@ time_left = TOTAL_GAME_TIME
 score = 0
 curr_color = random.choice(COLORS)
 
+
 def reset_game():
     global time_left, score
 
     time_left = TOTAL_GAME_TIME
     score = 0
 
-    timer.configure(text=f"Time left: {time_left}s", text_color='white')
+    timer.configure(text=f"Time left: {time_left}s", text_color="white")
     user_score.configure(text=f"Score: {score}")
 
 
@@ -25,6 +26,7 @@ def changeText():
     curr_color = random.choice(COLORS)
     changing_text.configure(text=random.choice(COLORS), text_color=curr_color)
 
+
 def run_timer():
     global time_left
 
@@ -33,7 +35,7 @@ def run_timer():
         timer.configure(text=f"Time left: {time_left}s")
         root.after(1000, run_timer)
     elif time_left == 0:
-        timer.configure(text="Time up!", text_color='red')
+        timer.configure(text="Time up!", text_color="red")
         reset_btn.configure(state=ctk.NORMAL)
 
 
@@ -70,8 +72,10 @@ user_score = ctk.CTkLabel(time_and_score_frame, text=f"Score: 0")
 user_score.pack(side="right", padx=10)
 
 ctk.CTkLabel(
-    app_frame, text="Instruction: Enter the color of the text you see\nand not the text",
-    font=("Montserrat", 18, "italic"), text_color='lightblue'
+    app_frame,
+    text="Instruction: Enter the color of the text you see\nand not the text",
+    font=("Montserrat", 18, "italic"),
+    text_color="lightblue",
 ).pack(padx=10, pady=20)
 
 changing_text = ctk.CTkLabel(app_frame, text="blue", font=("Montserrat", 30, "bold"))
@@ -81,9 +85,11 @@ user_input = ctk.CTkEntry(app_frame, width=300, height=50)
 user_input.pack()
 user_input.bind("<Return>", start_game)
 
-ctk.CTkLabel(app_frame, text="Press enter to start the game...", text_color="grey").pack()
+ctk.CTkLabel(
+    app_frame, text="Press enter to start the game...", text_color="grey"
+).pack()
 
-reset_btn = ctk.CTkButton(app_frame, text='Reset Game', command=reset_game)
+reset_btn = ctk.CTkButton(app_frame, text="Reset Game", command=reset_game)
 reset_btn.pack(pady=20)
 
 root.mainloop()

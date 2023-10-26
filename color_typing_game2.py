@@ -26,6 +26,7 @@ def run_timer():
         timer.configure(text="Time up!", text_color="red")
         game_running_var.set(False)
 
+
 def verify_answer(answer):
     if answer == current_color_var.get():
         score_var.set(score_var.get() + 1)
@@ -81,8 +82,10 @@ user_score.pack(side="right", padx=10)
 time_and_score_frame.pack(fill=ctk.X)
 
 ctk.CTkLabel(
-    app_frame, text="Instruction: Enter the color of the text you see\nand not the text",
-    font=("Montserrat", 18, "italic"), text_color='lightblue'
+    app_frame,
+    text="Instruction: Enter the color of the text you see\nand not the text",
+    font=("Montserrat", 18, "italic"),
+    text_color="lightblue",
 ).pack(padx=10, pady=20)
 
 changing_text = ctk.CTkLabel(app_frame, text="Blue", font=("Montserrat", 30, "bold"))
@@ -92,7 +95,9 @@ user_input = ctk.CTkEntry(app_frame, width=300, height=50)
 user_input.pack()
 user_input.bind("<Return>", start_game)
 
-ctk.CTkLabel(app_frame, text="Press enter to start/reset the game...", text_color="grey").pack()
+ctk.CTkLabel(
+    app_frame, text="Press enter to start/reset the game...", text_color="grey"
+).pack()
 
 
 root.mainloop()

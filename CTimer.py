@@ -9,6 +9,7 @@ baseWindow = tk.Tk()
 
 ZEROS = "00"
 
+
 def get_time_inputs():
     return (
         hours_input.get().strip(),
@@ -41,7 +42,9 @@ def start_timer():
     base_frame = tk.Frame(timer_UI)
     base_frame.pack(pady=20, padx=10)
 
-    timeLabel = tk.Label(base_frame, text=f"{hours:02d}:{mins:02d}:{secs:02d}", font=('Arial', 24))
+    timeLabel = tk.Label(
+        base_frame, text=f"{hours:02d}:{mins:02d}:{secs:02d}", font=("Arial", 24)
+    )
     timeLabel.grid(row=0, column=0)
 
     while (hours != 0) or (mins != 0) or (secs != 0):
@@ -58,8 +61,8 @@ def start_timer():
         print(f"{hours:02d}:{mins:02d}:{secs:02d}")
         timeLabel.config(text=f"{hours:02d}:{mins:02d}:{secs:02d}")
 
-    timeLabel.config(text='Time up!!!')
-    playsound('./sounds/digital-alarm.mp3')
+    timeLabel.config(text="Time up!!!")
+    playsound("./sounds/digital-alarm.mp3")
     timer_UI.destroy()
 
 
